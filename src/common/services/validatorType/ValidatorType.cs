@@ -1,4 +1,4 @@
-namespace WebApi.Global.Services;
+namespace WebApi.Common.Services;
 // NOT USED
 using FluentValidation;
 using System.Reflection;

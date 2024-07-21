@@ -1,4 +1,4 @@
-namespace WebApi.Global.Middlewares;
+namespace WebApi.Common.Middlewares;
 // NOT USED
 // using Microsoft.AspNetCore.Mvc;
 // using FluentValidation;

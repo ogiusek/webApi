@@ -1,4 +1,4 @@
-namespace WebApi.Global.Services.Mapper;
+namespace WebApi.Common.Services.Mapper;
 
 public interface IMapper {
     TTo? Map<TFrom, TTo>(TFrom from) where TTo : class where TFrom : class;

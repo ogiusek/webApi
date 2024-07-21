@@ -1,7 +1,7 @@
-namespace WebApi.Global.Middlewares;
+namespace WebApi.Common.Middlewares;
 // NOT USED
 using Microsoft.AspNetCore.Http;
-using WebApi.Global.Attributes;
+using WebApi.Common.Attributes;
 
 // [Middleware]
 class HelloWorldMiddleware

@@ -8,7 +8,7 @@ namespace WebApi;
 // linq (pretty much js array functions)
 // xunit for testing
 
-using Global.Attributes;
+using Common.Attributes;
 
 static class Program{
     public static void Main(string[] args){

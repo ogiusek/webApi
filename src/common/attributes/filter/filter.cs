@@ -1,4 +1,4 @@
-namespace WebApi.Global.Attributes;
+namespace WebApi.Common.Attributes;
 
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
