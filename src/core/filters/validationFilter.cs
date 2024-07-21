@@ -1,4 +1,4 @@
-namespace WebApi.Common.Filters;
+namespace WebApi.Core.Filters;
 
 using System.Reflection;
 using FluentValidation;

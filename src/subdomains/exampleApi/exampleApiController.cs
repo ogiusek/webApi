@@ -2,7 +2,7 @@ namespace WebApi.ExampleApi.Controller;
 
 using Microsoft.AspNetCore.Mvc;
 using WebApi.ExampleApi.Models;
-using WebApi.Common.Services.Mapper;
+using WebApi.Core.Services.Mapper;
 
 [Route("example_api")]
 public class ExampleApiController : ControllerBase {

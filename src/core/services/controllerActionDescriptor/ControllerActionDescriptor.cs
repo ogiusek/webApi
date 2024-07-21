@@ -1,4 +1,4 @@
-namespace WebApi.Common.Services;
+namespace WebApi.Core.Services;
 // NOT USED
 using System.Reflection;
 using Attributes;

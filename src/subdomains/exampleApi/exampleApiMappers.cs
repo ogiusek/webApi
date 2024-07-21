@@ -1,7 +1,7 @@
 namespace WebApi.ExampleApi.Mappers;
 
 using WebApi.ExampleApi.Models;
-using WebApi.Common.Services.Mapper;
+using WebApi.Core.Services.Mapper;
 
 // examples(not used) 
 class MapperOne : IMap<HelloWorldBody, HelloWorldQuery> {

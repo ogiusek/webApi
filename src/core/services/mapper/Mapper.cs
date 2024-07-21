@@ -1,6 +1,6 @@
-namespace WebApi.Common.Services.Mapper;
+namespace WebApi.Core.Services.Mapper;
 
-using WebApi.Common.Attributes;
+using WebApi.Core.Attributes;
 using System.Reflection;
 
 [Service<IMapper>]

@@ -1,4 +1,4 @@
-namespace WebApi.Common.Attributes;
+namespace WebApi.Core.Attributes;
 
 using System.Reflection;
 
