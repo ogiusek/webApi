@@ -5,9 +5,9 @@ using WebApi.ExampleApi.Models;
 using WebApi.Global.Services.Mapper;
 
 [Route("example_api")]
-public class MyController : ControllerBase {
+public class ExampleApiController : ControllerBase {
     private readonly IMapper _mapper;
-    public MyController(IMapper mapper) => (_mapper) = (mapper);
+    public ExampleApiController(IMapper mapper) => (_mapper) = (mapper);
 
     [HttpGet("perf")]
     public IActionResult perfTest() {
