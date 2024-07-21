@@ -1,3 +1,6 @@
+using WebApi.Book;
+using WebApi.Core.Attributes;
+
 namespace WebApi;
 
 // asp net core
@@ -8,36 +11,27 @@ namespace WebApi;
 // linq (pretty much js array functions)
 // xunit for testing
 
-using Core.Attributes;
 
-static class Program{
-    public static void Main(string[] args){
+static class Program
+{
+    public static void Main(string[] args)
+    {
         var builder = WebApplication.CreateBuilder(args);
-        builder.Services.ConfigureServices();
 
-        var app = builder.Build();
-        app.ConfigureApp();
-
-        app.Run();
-    }
-
-    public static void ConfigureServices(this IServiceCollection services){
-        services.Addservices();
-        services.AddControllers(options => {
+        builder.Services.Addservices();
+        builder.Services.AddControllers(options =>
+        {
             options.AddFilters();
         });
-    }
 
-    public static void ConfigureApp(this WebApplication app){
+        var app = builder.Build();
+
         app.MapControllers();
         app.AddMiddlewares();
 
         app.UseAuthorization();
         app.UseRouting();
-        // app.UseHttpsRedirection();
 
-        if (!app.Environment.IsDevelopment())
-            return;
-        // development
+        app.Run();
     }
 }
