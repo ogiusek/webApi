@@ -1,17 +1,21 @@
-using WebApi.Book.Entities;
-using WebApi.Book.Models;
+using WebApi.Book.ResponseModels;
+using WebApi.Book.RequestModels;
 using WebApi.Core.Services.Mapper;
 
 namespace WebApi.Book.Mappers;
 
-class BookModelToBookEntity : IMap<BookModel, BookEntity>
+class BookModelToBookEntity : IMap<BookRequestModel, Entities.Book>
 {
-    public BookEntity Map(BookModel source)
+    public Entities.Book Map(BookRequestModel source)
     {
-        return new BookEntity
-        {
-            Id = source.Id,
-            Name = source.Name
-        };
+        return new Entities.Book(source.Name);
+    }
+}
+
+class BookEntityToBookModel : IMap<Entities.Book, BookResponseModel>
+{
+    public BookResponseModel Map(Entities.Book source)
+    {
+        return new BookResponseModel(source.Id, source.Name);
     }
 }

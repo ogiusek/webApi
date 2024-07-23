@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using WebApi.Book;
 using WebApi.Core.Attributes;
 
@@ -23,6 +24,7 @@ static class Program
         {
             options.AddFilters();
         });
+        builder.ConfigureDbContext<BookContext>();
 
         var app = builder.Build();
 
