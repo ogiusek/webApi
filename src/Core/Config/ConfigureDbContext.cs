@@ -10,22 +10,19 @@ static class ConfigureDbContextClass
         MethodInfo method = typeof(ConfigureDbContextClass).GetMethod(
             nameof(ConfigureDbContext),
             1,
-            [typeof(IServiceCollection), typeof(string)] // new Type[] { typeof(IServiceCollection) }
+            [typeof(IServiceCollection), typeof(string)]
         );
         MethodInfo generic = method!.MakeGenericMethod(DbContextType);
-        generic.Invoke(null, [services, connectionString]); // generic.Invoke(null, new object[] { services, connectionString });
+        generic.Invoke(null, [services, connectionString]);
     }
 
     public static void ConfigureDbContext<TDbContext>(this IServiceCollection services, string connectionString)
         where TDbContext : DbContext
     {
-        // services.AddDbContext<TDbContext>();
         services.AddDbContext<TDbContext>(options =>
         {
             options.UseNpgsql(connectionString);
-            options.UseLoggerFactory(LoggerFactory.Create(builder => builder
-                .AddFilter((category, level) => level == LogLevel.Information)));
-            // .AddFilter((category, level) => category == DbLoggerCategory.Database.Command.Name && level == LogLevel.Information)));
+            options.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddFilter((category, level) => level == LogLevel.Information)));
         });
 
         using (var scope = services.BuildServiceProvider().CreateScope())
@@ -33,9 +30,5 @@ static class ConfigureDbContextClass
             var context = scope.ServiceProvider.GetRequiredService<TDbContext>();
             context.Database.EnsureCreated();
         }
-
-        // DbContext dbContext = Activator.CreateInstance<TDbContext>([])!;
-        // DbContext dbContext = (DbContext)Activator.CreateInstance(typeof(TDbContext), [new DbContextOptions<TDbContext>()]);
-        // dbContext.Database.EnsureCreated();
     }
 }

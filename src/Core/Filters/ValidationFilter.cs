@@ -25,9 +25,6 @@ class ValidationFilter : IActionFilter
     {
         if (type == null)
             return null;
-        // List<Type> validators = Assembly
-        //     .GetExecutingAssembly()
-        //     .GetTypes()
         List<Type> validators = GetValidators()
             .Where(t => t.GetInterfaces().Contains(typeof(IValidator<>).MakeGenericType(type)))
             .ToList();
