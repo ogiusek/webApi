@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace WebApi.Core.Services.Mapper;
 
-[Service<IMapper>]
+[Service<IMapper>(Lifetime = Attributes.ServiceLifetime.Singleton)]
 class Mapper : IMapper
 {
     private readonly IEnumerable<IMapBase> _maps;

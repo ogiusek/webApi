@@ -17,13 +17,13 @@ public interface IServiceBase
 [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
 public class Service : Attribute, IServiceBase
 {
-    public ServiceLifetime Lifetime { get; set; } = ServiceLifetime.Singleton;
+    public ServiceLifetime Lifetime { get; set; } = ServiceLifetime.Scoped;
 };
 
 [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
 public class Service<TInterface> : Attribute, IServiceBase
 {
-    public ServiceLifetime Lifetime { get; set; } = ServiceLifetime.Singleton;
+    public ServiceLifetime Lifetime { get; set; } = ServiceLifetime.Scoped;
 }
 
 static class ServiceLoader
