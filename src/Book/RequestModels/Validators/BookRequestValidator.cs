@@ -3,7 +3,7 @@ using WebApi.Book.RequestModels;
 
 namespace WebApi.ExampleApi.RequestModels.Validators;
 
-class BookModelValidator : AbstractValidator<BookRequestModel>
+public class BookModelValidator : AbstractValidator<BookRequestModel>
 {
     public BookModelValidator()
     {

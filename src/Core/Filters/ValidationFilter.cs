@@ -34,26 +34,30 @@ class ValidationFilter : IActionFilter
 
     private FluentValidation.Results.ValidationResult RunValidation(Type validatorType, object value)
     {
-        if (value == null || validatorType == null) return null;
+        if (validatorType == null) return null;
         var validator = Activator.CreateInstance(validatorType);
         MethodInfo validatorMethod = typeof(IValidator<>).MakeGenericType(value.GetType()).GetMethod("Validate");
-        FluentValidation.Results.ValidationResult validated = validatorMethod.Invoke(validator, new object[] { value }) as FluentValidation.Results.ValidationResult;
+        var validated = validatorMethod.Invoke(validator, new object[] { value }) as FluentValidation.Results.ValidationResult;
         return validated;
     }
 
     // Do something before the action executes.
     public void OnActionExecuting(ActionExecutingContext context)
     {
+        if (context.ActionArguments.Count != context.ActionDescriptor.Parameters.Count)
+        {
+            context.Result = new BadRequestObjectResult("Invalid arguments");
+            return;
+        }
+
         foreach (var arg in context.ActionArguments)
         {
             object value = arg.Value;
-            if (value == null) continue;
-
-            Type validatorType = GetValidatorType(value?.GetType());
+            Type validatorType = GetValidatorType(value.GetType());
             if (validatorType == null) continue;
 
             var validated = RunValidation(validatorType, value);
-            if (validated?.IsValid != false) continue;
+            if (validated.IsValid) continue;
 
             context.Result = new BadRequestObjectResult(validated.ToString());
             return;

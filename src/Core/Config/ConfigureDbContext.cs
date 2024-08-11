@@ -1,5 +1,8 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace WebApi.Core.Attributes;
 
@@ -28,7 +31,8 @@ static class ConfigureDbContextClass
         using (var scope = services.BuildServiceProvider().CreateScope())
         {
             var context = scope.ServiceProvider.GetRequiredService<TDbContext>();
-            context.Database.EnsureCreated();
+            context.Database.Migrate();
         }
     }
 }
+

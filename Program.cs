@@ -27,3 +27,9 @@ app.Run();
 // identity - for external authentication
 // xunit for testing
 
+// design patterns for separation of api layer with business logic
+// CQRS command query responsibility separation (verified)
+// MVC Model view controller (verified)
+// HEXAGONAL archtecture (verified)
+// SOA Service oriented architecture (not verified)
+// CLEAN architecture (not verified)

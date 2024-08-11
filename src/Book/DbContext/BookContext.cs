@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 using WebApi.Core.Attributes;
 
 namespace WebApi.Book;
@@ -8,6 +7,13 @@ namespace WebApi.Book;
 public class BookContext : DbContext
 {
     public DbSet<Entities.Book> Book { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.HasDefaultSchema("book");
+        modelBuilder.ApplyConfiguration(new Entities.BookConfiguration());
+    }
 
     public BookContext(DbContextOptions<BookContext> options) : base(options) { }
 }
